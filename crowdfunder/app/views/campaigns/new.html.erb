@@ -1,0 +1,43 @@
+<%= form_for @campaign do |f| %>
+<!-- must use the class variable here. -->
+
+<% if @campaign.errors.any? %>
+	<div id="error_explanation">
+		<h2><%= pluralize(@campaign.errors.count, "error") %> prevented this campaign form being saved:</h2>
+
+		<ul>
+			<% @campaign.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+			<% end %>
+		</ul>
+	</div>
+	<% end %>
+
+
+<%= f.label :title %>
+<%= f.text_field :title %>
+
+<br>
+
+<%= f.label :description %>
+<%= f.text_field :description %>
+
+<br>
+
+<%= f.label :target_in_cents %>
+<%= f.text_field :target_in_cents %>
+
+<br>
+
+<%= f.label :start_date %>
+<%= f.date_field :start_date %>
+
+<br>
+
+<%= f.label :end_date %>
+<%= f.date_field :end_date %>
+
+
+<%= f.submit %>
+
+<% end %>

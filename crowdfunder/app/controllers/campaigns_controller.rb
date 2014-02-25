@@ -5,13 +5,13 @@ class CampaignsController < ApplicationController
   end
 
   def new
-  @campaign = Campaign.new    
+  @campaign = Campaign.new
   end
 
   def create
     @campaign = Campaign.new(campaign_params)
     if @campaign.save
-      redirect_to campaign_path
+      redirect_to campaign_path(@campaign)
     else
       render :new
     end
@@ -28,7 +28,7 @@ class CampaignsController < ApplicationController
   def update
     @campaign = Campaign.find(params[:id])
     if @campaign.update_attributes(campaign_params)
-      redirect_to campaign_path
+      redirect_to campaign_path(@campaign)
     else
       render :edit
     end
