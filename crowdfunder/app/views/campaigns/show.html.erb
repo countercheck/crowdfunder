@@ -4,13 +4,13 @@
 	<li><%= @campaign.description %></li>
 	<li><%= @campaign.start_date %></li>
 	<li><%= @campaign.end_date %></li>
-	<li>$<%= @campaign.target_in_cents %></li>
+	<li>$<%= @campaign.total_funds_raised %></li>
 </ul>
 
 <h2>Breakpoints for <%= @campaign.title %></h2>
 	<% @campaign.breakpoints.each do |b| %>
 		<% if b.id  %>
-			<div class = "breakpoint">
+			<div class = "breakpoint" id="c_<%= b.campaign.id %>_b_<%= b.id %>">
 				<ul>
 					<li><%= b.title %></li>
 				 	<li><%= b.description %></li>

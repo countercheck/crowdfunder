@@ -20,10 +20,10 @@ class CampaignsController < ApplicationController
   def show
     @campaign = Campaign.find(params[:id])
     @campaign_breakpoints = @campaign.breakpoints.all
-
-    #below for loading form only
-    @breakpoint = @campaign.breakpoints.new
-    @contribution = @breakpoint.contributions.new
+    # this will add an empty element to the end of this array
+    # @breakpoint = @campaign.breakpoints.new  # this should be build or create
+    #so instead we use
+    @breakpoint = Breakpoint.new( :campaign_id => @campaign.id )
   end
 
   def edit
