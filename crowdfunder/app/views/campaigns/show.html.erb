@@ -8,3 +8,63 @@
 </ul>
 
 <!-- add display of duration later -->
+
+<h2>Breakpoints for <%= @campaign.title %></h2>
+	<% @campaign.breakpoints.each do |b| %>
+
+	<% if b.id  %>
+	<div class = "breakpoint">
+		<ul>
+		<li><%= b.title %></li>
+	 	<li><%= b.description %></li>
+		<li><%= b.estimated_delivery %></li>
+		<li><%= b.value_in_cents %></li>
+		<li><%= b.number_available %></li>
+		<%= link_to "delete", [@campaign, b], :method => :delete %>
+	</div>
+	<% end %>
+	<% end %>
+
+
+<h2>Add breakpoint</h2>
+
+<%= form_for ([@campaign, @breakpoint]) do |f| %>
+
+	<% if @breakpoint.errors.any?  %>
+		<div id = "error_explanation">
+			<h2><%= pluralize(@breakpoint.errors.count, "error") %> prevented this breakpoint from being saved.</h2>
+			<ul>
+				<% @breakpoint.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+
+	<div class = "field">
+		<p>
+			<%= f.label :title %><br/>
+			<%= f.text_area :title %>
+		</p>
+		<p>
+			<%= f.label :description %><br/>
+			<%= f.text_area :description %>
+		</p>
+		<p>
+			<%= f.label :estimated_delivery %><br/>
+			<%= f.date_field :estimated_delivery %>
+		</p>
+		<p>
+			<%= f.label :value_in_cents %><br/>
+			<%= f.text_field :value_in_cents %>
+		</p>
+		<p>
+			<%= f.label :number_available %><br/>
+			<%= f.text_field :number_available %>
+		</p>
+	</div>
+
+	<div class = "actions">
+		<%= f.submit %>
+	</div>
+	<% end %>

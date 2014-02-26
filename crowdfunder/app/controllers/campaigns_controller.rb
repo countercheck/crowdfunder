@@ -19,6 +19,7 @@ class CampaignsController < ApplicationController
 
   def show
     @campaign = Campaign.find(params[:id])
+    @breakpoint = @campaign.breakpoints.new
   end
 
   def edit
