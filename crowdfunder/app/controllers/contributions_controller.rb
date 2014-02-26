@@ -14,7 +14,7 @@ class ContributionsController < ApplicationController
 
   private
   def contribution_params
-    params.require(:contribution).permit([:campaign][:breakpoint][:breakpoint_id])
+    params.permit(:breakpoint_id)
   end
 
   def load_breakpoint

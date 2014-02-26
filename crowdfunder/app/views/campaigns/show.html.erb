@@ -17,7 +17,7 @@
 					<li><%= b.estimated_delivery %></li>
 					<li><%= b.value_in_cents %></li>
 					<li><%= b.number_available %></li>
-					<li><%= link_to 'contribute here', campaign_breakpoint_contributions_path(@campaign.id, b.id), :method => 'post' %></li>
+					<li><%= link_to 'contribute here', campaign_breakpoint_contributions_path(b.campaign, b), :method => 'post' %></li>
 				</ul>
 			</div>
 		<% end %>
