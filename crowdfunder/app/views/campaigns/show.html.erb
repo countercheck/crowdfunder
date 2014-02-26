@@ -17,6 +17,7 @@
 					<li><%= b.estimated_delivery %></li>
 					<li><%= b.value_in_cents %></li>
 					<li><%= b.number_available %></li>
+					<li><%= link_to 'contribute here', campaign_breakpoint_contributions_path(@campaign.id, b.id), :method => 'post' %></li>
 				</ul>
 			</div>
 		<% end %>
@@ -65,17 +66,11 @@
 	<% end %>
 
 
-<%= form_for ([@campaign, @contribution]) do |f| %>
-	<div class = "field">
-		<p>
-			<%= f.label :breakpoint_id %><br/>
-			<%= f.text_field :breakpoint_id %>
-		</p>
-	</div>
-	<div class = "actions">
-		<%= f.submit %>
-	</div>
-<% end %>
+
+
+<div class = "nested">
+
+</div>
 
 
 

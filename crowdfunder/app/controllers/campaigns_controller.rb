@@ -19,8 +19,11 @@ class CampaignsController < ApplicationController
 
   def show
     @campaign = Campaign.find(params[:id])
+    @campaign_breakpoints = @campaign.breakpoints.all
+
+    #below for loading form only
     @breakpoint = @campaign.breakpoints.new
-    @contribution = @campaign.contributions.new
+    @contribution = @breakpoint.contributions.new
   end
 
   def edit
