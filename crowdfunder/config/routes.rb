@@ -2,6 +2,7 @@ Crowdfunder::Application.routes.draw do
 
   resources :campaigns  do
       resources :breakpoints, :except => [:index]
+        resources :contributions
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

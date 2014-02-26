@@ -7,35 +7,30 @@
 	<li>$<%= @campaign.target_in_cents %></li>
 </ul>
 
-<!-- add display of duration later -->
-
 <h2>Breakpoints for <%= @campaign.title %></h2>
 	<% @campaign.breakpoints.each do |b| %>
-
-	<% if b.id  %>
-	<div class = "breakpoint">
-		<ul>
-		<li><%= b.title %></li>
-	 	<li><%= b.description %></li>
-		<li><%= b.estimated_delivery %></li>
-		<li><%= b.value_in_cents %></li>
-		<li><%= b.number_available %></li>
-		<%= link_to "delete", [@campaign, b], :method => :delete %>
-	</div>
+		<% if b.id  %>
+			<div class = "breakpoint">
+				<ul>
+					<li><%= b.title %></li>
+				 	<li><%= b.description %></li>
+					<li><%= b.estimated_delivery %></li>
+					<li><%= b.value_in_cents %></li>
+					<li><%= b.number_available %></li>
+				</ul>
+			</div>
+		<% end %>
 	<% end %>
-	<% end %>
-
 
 <h2>Add breakpoint</h2>
 
 <%= form_for ([@campaign, @breakpoint]) do |f| %>
-
 	<% if @breakpoint.errors.any?  %>
 		<div id = "error_explanation">
 			<h2><%= pluralize(@breakpoint.errors.count, "error") %> prevented this breakpoint from being saved.</h2>
 			<ul>
 				<% @breakpoint.errors.full_messages.each do |msg| %>
-				<li><%= msg %></li>
+					<li><%= msg %></li>
 				<% end %>
 			</ul>
 		</div>
@@ -68,3 +63,20 @@
 		<%= f.submit %>
 	</div>
 	<% end %>
+
+
+<%= form_for ([@campaign, @contribution]) do |f| %>
+	<div class = "field">
+		<p>
+			<%= f.label :breakpoint_id %><br/>
+			<%= f.text_field :breakpoint_id %>
+		</p>
+	</div>
+	<div class = "actions">
+		<%= f.submit %>
+	</div>
+<% end %>
+
+
+
+
