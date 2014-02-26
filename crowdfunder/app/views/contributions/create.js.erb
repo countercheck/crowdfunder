@@ -1,1 +1,2 @@
-$('#target').html('Something got clicked');
+$('#target').html('Funds raised $<%= @campaign.total_funds_raised %> contribution <%= @contribution.id %>');
+$('#c_<%= @campaign.id %>_b_<%= @contribution.breakpoint_id %> a').html("you've already pledged!").class('disabled');
