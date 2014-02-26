@@ -5,7 +5,7 @@ class ContributionsController < ApplicationController
     #@contribution = @breakpoint.contributions.new(:breakpoint_id => params[:breakpoint_id])
     @contribution = @breakpoint.contributions.new(contribution_params)
     if @contribution.save
-      redirect_to campaign_path(@campaign)
+      #redirect_to campaign_path(@campaign)
     end
   end
 

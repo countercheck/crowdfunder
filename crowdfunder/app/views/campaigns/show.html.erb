@@ -5,6 +5,7 @@
 	<li><%= @campaign.start_date %></li>
 	<li><%= @campaign.end_date %></li>
 	<li>Funds raised $<%= @campaign.total_funds_raised %></li>
+	<li id = "target"></li>
 </ul>
 
 <h2>Breakpoints for <%= @campaign.title %></h2>
@@ -15,9 +16,9 @@
 					<li><%= b.title %></li>
 				 	<li><%= b.description %></li>
 					<li><%= b.estimated_delivery %></li>
-					<li><%= b.value_in_cents %></li>
-					<li><%= b.number_available %></li>
-					<li><%= link_to 'contribute here', campaign_breakpoint_contributions_path(b.campaign, b), :method => 'post' %></li>
+					<li>Value: <%= b.value_in_cents %></li>
+					<li>Number available: <%= b.number_available %></li>
+					<li><%= link_to 'contribute here', campaign_breakpoint_contributions_path(b.campaign, b), {:method => 'post', :remote => true }%></li>
 				</ul>
 			</div>
 		<% end %>
@@ -64,14 +65,3 @@
 		<%= f.submit %>
 	</div>
 	<% end %>
-
-
-
-
-<div class = "nested">
-
-</div>
-
-
-
-
