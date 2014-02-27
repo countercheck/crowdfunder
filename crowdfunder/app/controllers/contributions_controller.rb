@@ -4,6 +4,7 @@ class ContributionsController < ApplicationController
   def create
     #@contribution = @breakpoint.contributions.new(:breakpoint_id => params[:breakpoint_id])
     @contribution = @breakpoint.contributions.new(contribution_params)
+    @contribution.backer_id = current_user.id
     if @contribution.save
       flash.now[:notice] = 'You just contributed'
     end

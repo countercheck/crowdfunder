@@ -5,4 +5,7 @@ class User < ActiveRecord::Base
   validates :email, presence: true, uniqueness: true
   validates :password_confirmation, presence: true
 
+  has_many :campaigns
+  has_many :contributions
+
 end
