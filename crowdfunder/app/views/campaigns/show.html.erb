@@ -1,11 +1,21 @@
+<div class="messages"></div>
 <h1><%= @campaign.title %></h1>
 
+<h2>Dates</h2>
 <ul>
-	<li><%= @campaign.description %></li>
 	<li>Start <%= @campaign.start_date %></li>
 	<li>End <%= @campaign.end_date %></li>
 	<li><%= ((@campaign.end_date - @campaign.start_date) / 86400).round(0) %> days remaining!</li>
+</ul>
+
+<h2>Description</h2>
+<p><%= @campaign.description %></p>
+
+<h2>Goal</h2>
+<ul>
 	<li id = 'target'>Funds raised $<%= @campaign.total_funds_raised %></li>
+	<li>goal: $<%= @campaign.target_in_cents %></li>
+	<li id = 'percent'>percent: <%= (@campaign.total_funds_raised / @campaign.target_in_cents.to_f * 100).round(1) %></li>
 </ul>
 
 <h2>Breakpoints for <%= @campaign.title %></h2>
