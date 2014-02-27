@@ -3,8 +3,8 @@
 
 <h2>Dates</h2>
 <ul>
-	<li>Start <%= @campaign.start_date %></li>
-	<li>End <%= @campaign.end_date %></li>
+	<li>Start <%= @campaign.start_date.to_date %></li>
+	<li>End <%= @campaign.end_date.to_date %></li>
 	<li><%= ((@campaign.end_date - @campaign.start_date) / 86400).round(0) %> days remaining!</li>
 </ul>
 
