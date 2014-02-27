@@ -6,10 +6,13 @@ class CampaignsController < ApplicationController
 
   def new
     @campaign = Campaign.new
+
   end
 
   def create
     @campaign = Campaign.new(campaign_params)
+    @campaign.owner_id = current_user.id
+
     if @campaign.save
       redirect_to campaign_path(@campaign)
     else
