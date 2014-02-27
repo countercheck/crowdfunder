@@ -1,0 +1,7 @@
+<h1>All your contributions</h1>
+<h2> You have spent so far $<%= @user.breakpoints.sum('value_in_cents') %></h2>
+
+<div id="contributions">
+  <%= render @campaigns %>
+</div>
+
