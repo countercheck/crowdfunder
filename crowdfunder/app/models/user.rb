@@ -7,5 +7,6 @@ class User < ActiveRecord::Base
 
   has_many :campaigns
   has_many :contributions
+  has_many :breakpoints, through: :contributions
 
 end

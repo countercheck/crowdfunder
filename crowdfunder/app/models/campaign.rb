@@ -1,7 +1,7 @@
 class Campaign < ActiveRecord::Base
 	has_many :breakpoints
   has_many :contributions, :through => :breakpoints
-  belongs_to :owner, :class_name => 'User'
+  belongs_to :user
 
   def total_funds_raised
     result = 0

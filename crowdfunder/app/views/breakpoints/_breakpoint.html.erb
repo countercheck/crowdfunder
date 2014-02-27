@@ -5,6 +5,10 @@
     <li><%= breakpoint.estimated_delivery %></li>
     <li>Value: <%= breakpoint.value_in_cents %></li>
     <li>Number available: <%= breakpoint.number_available %></li>
-    <li><%= link_to 'contribute here', campaign_breakpoint_contributions_path(breakpoint.campaign, breakpoint), {:method => 'post', :remote => true }%></li>
+    <% if current_user.breakpoints.include? breakpoint %>
+      <li>Congratulations, you have backed this project!</li>
+    <% else %>
+      <li><%= link_to 'contribute here', campaign_breakpoint_contributions_path(breakpoint.campaign, breakpoint), {:method => 'post', :remote => true }%></li>
+    <% end %>
   </ul>
 </div>
