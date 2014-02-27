@@ -19,21 +19,9 @@
 </ul>
 
 <h2>Breakpoints for <%= @campaign.title %></h2>
-	<% @campaign.breakpoints.each do |b| %>
-		<% if b.id  %>
-			<div class = "breakpoint" id="c_<%= b.campaign.id %>_b_<%= b.id %>">
-				<ul>
-					<li><%= b.title %></li>
-				 	<li><%= b.description %></li>
-					<li><%= b.estimated_delivery %></li>
-					<li>Value: <%= b.value_in_cents %></li>
-					<li>Number available: <%= b.number_available %></li>
-					<li><%= link_to 'contribute here', campaign_breakpoint_contributions_path(b.campaign, b), {:method => 'post', :remote => true }%></li>
-				</ul>
-			</div>
-		<% end %>
-	<% end %>
-
+<div id="campaigns">
+	<%= render @breakpoints %>
+</div>
 <h2>Add breakpoint</h2>
 
 <%= form_for ([@campaign, @breakpoint]) do |f| %>

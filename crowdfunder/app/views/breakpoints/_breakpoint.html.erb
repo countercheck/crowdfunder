@@ -1,0 +1,10 @@
+<div class = "breakpoint" id="c_<%= breakpoint.campaign.id %>_b_<%= breakpoint.id %>">
+  <ul>
+    <li><%= breakpoint.title %></li>
+    <li><%= breakpoint.description %></li>
+    <li><%= breakpoint.estimated_delivery %></li>
+    <li>Value: <%= breakpoint.value_in_cents %></li>
+    <li>Number available: <%= breakpoint.number_available %></li>
+    <li><%= link_to 'contribute here', campaign_breakpoint_contributions_path(breakpoint.campaign, breakpoint), {:method => 'post', :remote => true }%></li>
+  </ul>
+</div>

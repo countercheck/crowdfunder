@@ -22,7 +22,7 @@ class CampaignsController < ApplicationController
 
   def show
     @campaign = Campaign.find(params[:id])
-    @campaign_breakpoints = @campaign.breakpoints.all
+    @breakpoints = @campaign.breakpoints.all
     # this will add an empty element to the end of this array
     # @breakpoint = @campaign.breakpoints.new  # this should be build or create
     #so instead we use
