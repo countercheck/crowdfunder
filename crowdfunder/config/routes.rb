@@ -1,4 +1,6 @@
 Crowdfunder::Application.routes.draw do
+  resources :users, :except => [:index]
+  resources :sessions, :only => [:new, :create, :destroy]
   resources :campaigns  do
       resources :breakpoints, :except => [:index] do
         resources :contributions, :except => [:index, :edit, :new]

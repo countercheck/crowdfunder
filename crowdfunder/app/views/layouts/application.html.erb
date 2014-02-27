@@ -8,6 +8,15 @@
 </head>
 <body>
 
+<p>
+	<%= link_to 'login', new_session_path %>
+	<%= link_to 'logout', session_path("blah"), :method => :delete %>
+</p>
+
+<p>
+	<%= link_to 'signup', new_user_path %>
+</p>
+
 <% if flash[:notice] %>
 	<p id ="notice"><%= flash[:notice] %></p>
 <% end %>
