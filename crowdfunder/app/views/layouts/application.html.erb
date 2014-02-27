@@ -17,6 +17,11 @@
 	<%= link_to 'signup', new_user_path %>
 </p>
 
+
+<% if current_user %>
+	<p>Logged in as <%= current_user.email %></p>
+<% end %>
+
 <% if flash[:notice] %>
 	<p id ="notice"><%= flash[:notice] %></p>
 <% end %>
