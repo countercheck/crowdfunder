@@ -1,4 +1,9 @@
 Crowdfunder::Application.routes.draw do
+  #match 'tagged' => 'campaigns#tagged', :as => 'tagged'
+  post 'campaigns/tagged' => 'campaigns#tagged', :as => 'tagged'
+
+        #get 'search', on: :collection
+
   resources :users, :except => [:index]
   resources :sessions, :only => [:new, :create, :destroy]
   resources :campaigns  do

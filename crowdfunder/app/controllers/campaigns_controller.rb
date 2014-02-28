@@ -1,16 +1,23 @@
 class CampaignsController < ApplicationController
 
   def index
-    @campaigns = Campaign.page(params[:page])
+
+    if params[:tag]
+      @campaigns = Campaign.tagged_with(params[:tag]).page
+    else
+      @campaigns = Campaign.page(params[:page])
+    end
+
     respond_to do |format|
       format.html #initial load
       format.js #after clicking a page link
     end
+
   end
+
 
   def new
     @campaign = Campaign.new
-
   end
 
   def create
@@ -54,7 +61,7 @@ class CampaignsController < ApplicationController
 
   private
   def campaign_params
-    params.require(:campaign).permit(:id, :title, :description, :target_in_cents, :start_date, :end_date)
+    params.require(:campaign).permit(:tag_list, :id, :title, :description, :target_in_cents, :start_date, :end_date)
   end
 
 end
