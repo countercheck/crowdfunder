@@ -1,6 +1,7 @@
 class BreakpointsController < ApplicationController
 
 	before_filter :load_campaign
+	before_filter :ensure_logged_in
 
 	def create
 		@breakpoint = @campaign.breakpoints.new(breakpoint_params)
