@@ -1,5 +1,7 @@
 class CampaignsController < ApplicationController
 
+  before_filter :ensure_logged_in, :only => [:edit, :destroy, :new]
+
   def index
 
     if params[:tag]

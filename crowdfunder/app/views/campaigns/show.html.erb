@@ -28,44 +28,48 @@
 <div id="campaigns">
 	<%= render @breakpoints %>
 </div>
-<h2>Add breakpoint</h2>
 
-<%= form_for ([@campaign, @breakpoint]) do |f| %>
-	<% if @breakpoint.errors.any?  %>
-		<div id = "error_explanation">
-			<h2><%= pluralize(@breakpoint.errors.count, "error") %> prevented this breakpoint from being saved.</h2>
-			<ul>
-				<% @breakpoint.errors.full_messages.each do |msg| %>
-					<li><%= msg %></li>
-				<% end %>
-			</ul>
+<% if current_user == @campaign.user %>
+	<h2>Add breakpoint</h2>
+
+	<%= form_for ([@campaign, @breakpoint]) do |f| %>
+		<% if @breakpoint.errors.any?  %>
+			<div id = "error_explanation">
+				<h2><%= pluralize(@breakpoint.errors.count, "error") %> prevented this breakpoint from being saved.</h2>
+				<ul>
+					<% @breakpoint.errors.full_messages.each do |msg| %>
+						<li><%= msg %></li>
+					<% end %>
+				</ul>
+			</div>
+		<% end %>
+
+		<div class = "field">
+			<p>
+				<%= f.label :title %><br/>
+				<%= f.text_area :title %>
+			</p>
+			<p>
+				<%= f.label :description %><br/>
+				<%= f.text_area :description %>
+			</p>
+			<p>
+				<%= f.label :estimated_delivery %><br/>
+				<%= f.date_field :estimated_delivery %>
+			</p>
+			<p>
+				<%= f.label :value_in_cents %><br/>
+				<%= f.text_field :value_in_cents %>
+			</p>
+			<p>
+				<%= f.label :number_available %><br/>
+				<%= f.text_field :number_available %>
+			</p>
+		</div>
+
+		<div class = "actions">
+			<%= f.submit %>
 		</div>
 	<% end %>
 
-	<div class = "field">
-		<p>
-			<%= f.label :title %><br/>
-			<%= f.text_area :title %>
-		</p>
-		<p>
-			<%= f.label :description %><br/>
-			<%= f.text_area :description %>
-		</p>
-		<p>
-			<%= f.label :estimated_delivery %><br/>
-			<%= f.date_field :estimated_delivery %>
-		</p>
-		<p>
-			<%= f.label :value_in_cents %><br/>
-			<%= f.text_field :value_in_cents %>
-		</p>
-		<p>
-			<%= f.label :number_available %><br/>
-			<%= f.text_field :number_available %>
-		</p>
-	</div>
-
-	<div class = "actions">
-		<%= f.submit %>
-	</div>
-	<% end %>
+<% end %>
