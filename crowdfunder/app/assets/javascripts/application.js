@@ -13,3 +13,21 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+$(document).ready(function(){
+
+	$('.contribute-button').on('click',function(e){
+
+		e.preventDefault();
+		myUrl = $(this).attr('data');
+		$.ajax({
+			url: myUrl,
+			type: 'POST',
+			dataType: 'script'
+		});
+
+	});
+
+
+
+});

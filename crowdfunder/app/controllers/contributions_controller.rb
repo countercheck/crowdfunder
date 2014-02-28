@@ -5,8 +5,9 @@ class ContributionsController < ApplicationController
     #@contribution = @breakpoint.contributions.new(:breakpoint_id => params[:breakpoint_id])
     @contribution = @breakpoint.contributions.new(contribution_params)
     @contribution.user = current_user
-    if @contribution.save
-      flash.now[:notice] = 'You just contributed'
+    @contribution.save
+    respond_to do |format|
+      format.js
     end
   end
 

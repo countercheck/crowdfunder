@@ -1,4 +1,1 @@
-$('#target').html('Funds raised $<%= @campaign.total_funds_raised %> contribution <%= @contribution.id %>');
-$('#c_<%= @campaign.id %>_b_<%= @contribution.breakpoint_id %> a').html("you've already pledged!");
-
-$('#percent').html('perecent: <%= (@campaign.total_funds_raised / @campaign.target_in_cents.to_f * 100).round(1) %>')
+$('#b_<%= @breakpoint.id %>' ).replaceWith('<%=escape_javascript( render @breakpoint )%>');
