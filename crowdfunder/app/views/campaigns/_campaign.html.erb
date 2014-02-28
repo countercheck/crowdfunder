@@ -2,9 +2,10 @@
 	<li><%= link_to campaign.title, campaign_path(campaign) %></li>
 	<li><%= campaign.description %></li>
   <li>Campaign started by: <%= campaign.user.name %></li>
-	<li><%= campaign.start_date %></li>
-	<li><%= campaign.end_date %></li>
+	<li>Begins on: <%= campaign.start_date.to_s(:long_ordinal) %></li>
+	<li>Ends on:<%= campaign.end_date.to_s(:long_ordinal) %></li>
 	<li>$<%= campaign.target_in_cents %></li>
+  <li>Percent complete: <%= campaign.percent_funds_raised %></li>
 	<% if campaign.tags.any? %>
 		<li>tags:
 		<% campaign.tag_list.each do |t| %>

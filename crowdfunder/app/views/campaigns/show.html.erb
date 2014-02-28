@@ -4,13 +4,13 @@
 
 <h2>Dates</h2>
 <ul>
-	<li>Start <%= @campaign.start_date.to_date %></li>
-	<li>End <%= @campaign.end_date.to_date %></li>
+	<li>Start <%= @campaign.start_date.to_s(:long_ordinal) %></li>
+	<li>End <%= @campaign.end_date.to_date.to_s(:long_ordinal) %></li>
 
 	<% if @campaign.start_date > DateTime.now %>
-		<li>Campaign not started yet - Starting in <%= ((@campaign.start_date - DateTime.now) / 86400).round(1) %> days!</li>
+		<li>Campaign not started yet - Starting in <%= @campaign.days_before_start %> days!</li>
 	<% else %>
-		<li><%= ((@campaign.end_date - DateTime.now) / 86400).round(1) %> days remaining!</li>
+		<li><%= @campaign.days_before_end %> of <%= @campaign.total_days %> days remaining!</li>
 	<% end %>
 </ul>
 
@@ -21,7 +21,7 @@
 <ul>
 	<li id = 'target'>Funds raised $<%= @campaign.total_funds_raised %></li>
 	<li>goal: $<%= @campaign.target_in_cents %></li>
-	<li id = 'percent'>percent: <%= (@campaign.total_funds_raised / @campaign.target_in_cents.to_f * 100).round(1) %></li>
+	<li id = 'percent'>percent: <%= @campaign.percent_funds_raised %></li>
 </ul>
 
 <h2>Breakpoints for <%= @campaign.title %></h2>
