@@ -4,5 +4,13 @@
 	<li><%= campaign.start_date %></li>
 	<li><%= campaign.end_date %></li>
 	<li>$<%= campaign.target_in_cents %></li>
-	<li>tags: <%= campaign.tag_list.each {|t| t} %></li>
+	<% if campaign.tags.any? %>
+		<li>tags:
+		<% campaign.tag_list.each do |t| %>
+			<%= link_to t, campaigns_path(tag: t) %>
+		<% end %>
+		</li>
+	<% end %>
+
 </ul>
+
