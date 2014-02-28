@@ -1,4 +1,4 @@
-$('#campaigns' ).replaceWith('<div id = campaigns> <%= escape_javascript(render @campaigns) %></div>');
+$('#campaigns' ).html('<%= escape_javascript(render @campaigns) %>');
 $('.pagination').replaceWith('<%= escape_javascript(link_to paginate @campaigns) %>')
 
 $('.pagination a').on('click',function(e){

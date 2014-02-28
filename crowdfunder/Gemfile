@@ -12,6 +12,9 @@ gem 'acts-as-taggable-on'
 # use sorcery
 gem 'sorcery'
 
+#foundation
+gem 'zurb-foundation'
+
 #kaminari for pagination
 gem 'kaminari'
 

@@ -1,17 +1,18 @@
-<ul>
-	<li><%= link_to campaign.title, campaign_path(campaign) %></li>
-	<li><%= campaign.description %></li>
-  <li>Campaign started by: <%= campaign.user.name %></li>
-	<li><%= campaign.start_date %></li>
-	<li><%= campaign.end_date %></li>
-	<li>$<%= campaign.target_in_cents %></li>
-	<% if campaign.tags.any? %>
-		<li>tags:
-		<% campaign.tag_list.each do |t| %>
-			<%= link_to t, campaigns_path(tag: t) %>
+<li data-equalizer>
+	<ul data-equalizer-watch>
+		<li><%= link_to campaign.title, campaign_path(campaign) %></li>
+		<li><%= campaign.description %></li>
+	  <li>Campaign started by: <%= campaign.user.name %></li>
+		<li><%= campaign.start_date %></li>
+		<li><%= campaign.end_date %></li>
+		<li>$<%= campaign.target_in_cents %></li>
+		<% if campaign.tags.any? %>
+			<li>tags:
+			<% campaign.tag_list.each do |t| %>
+				<%= link_to t, campaigns_path(tag: t) %>
+			<% end %>
+			</li>
 		<% end %>
-		</li>
-	<% end %>
-
-</ul>
+	</ul>
+</li>
 

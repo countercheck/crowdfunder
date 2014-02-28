@@ -1,7 +1,10 @@
 <h1>All campaigns</h1>
-
-<%= link_to paginate @campaigns %>
-<div id="campaigns">
-	<%= render @campaigns %>
+<div class="pagination-centered">
+  <%= link_to paginate @campaigns %>
 </div>
-<%= link_to paginate @campaigns %>
+  <ul id="campaigns" class="small-block-grid-2 medium-block-grid-3 large-block-grid-4">
+    <%= render @campaigns %>
+  </ul>
+<div class="pagination-centered">
+  <%= link_to paginate @campaigns %>
+</div>
