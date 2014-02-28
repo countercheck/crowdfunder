@@ -1,2 +1,14 @@
-$('#campaigns' ).html('<%= escape_javascript(render @campaigns) %>');
+$('#campaigns' ).replaceWith('<div id = campaigns> <%= escape_javascript(render @campaigns) %></div>');
 $('.pagination').replaceWith('<%= escape_javascript(link_to paginate @campaigns) %>')
+
+$('.pagination a').on('click',function(e){
+
+    e.preventDefault();
+    myUrl = $(this).attr('href');
+    $.ajax({
+      url: myUrl,
+      type: 'get',
+      dataType: 'script'
+    });
+
+  });

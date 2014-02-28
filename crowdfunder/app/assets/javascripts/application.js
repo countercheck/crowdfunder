@@ -14,6 +14,20 @@
 //= require jquery_ujs
 //= require_tree .
 
+	function paginate(){
+	$('.pagination a').on('click',function(e){
+
+		e.preventDefault();
+		myUrl = $(this).attr('href');
+		$.ajax({
+			url: myUrl,
+			type: 'get',
+			dataType: 'script'
+		});
+
+	});
+}
+
 $(document).ready(function(){
 
 	$('.contribute-button').on('click',function(e){
@@ -28,18 +42,8 @@ $(document).ready(function(){
 
 	});
 
-
-	$('.pagination a').on('click',function(e){
-
-		e.preventDefault();
-		myUrl = $(this).attr('href');
-		$.ajax({
-			url: myUrl,
-			type: 'get',
-			dataType: 'script'
-		});
-
-	});
+	paginate();
+	
 
 
 
