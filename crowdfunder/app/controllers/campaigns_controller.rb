@@ -2,6 +2,10 @@ class CampaignsController < ApplicationController
 
   def index
     @campaigns = Campaign.page(params[:page])
+    respond_to do |format|
+      format.html #initial load
+      format.js #after clicking a page link
+    end
   end
 
   def new

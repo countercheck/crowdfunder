@@ -7,11 +7,10 @@
 	<li>End <%= @campaign.end_date.to_date %></li>
 
 	<% if @campaign.start_date > DateTime.now %>
-		<li>Campaign not started yet - Starting in <%= ((@campaign.start_date - DateTime.now) / 86400).round(0) %> days!</li>
+		<li>Campaign not started yet - Starting in <%= ((@campaign.start_date - DateTime.now) / 86400).round(1) %> days!</li>
 	<% else %>
-		<li><%= ((@campaign.end_date - DateTime.now) / 86400).round(0) %> days remaining!</li>
+		<li><%= ((@campaign.end_date - DateTime.now) / 86400).round(1) %> days remaining!</li>
 	<% end %>
-
 </ul>
 
 <h2>Description</h2>
