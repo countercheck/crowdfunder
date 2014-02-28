@@ -1,7 +1,7 @@
 class CampaignsController < ApplicationController
 
   def index
-    @campaigns = Campaign.all
+    @campaigns = Campaign.page(params[:page])
   end
 
   def new

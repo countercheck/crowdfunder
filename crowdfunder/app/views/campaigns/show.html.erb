@@ -5,7 +5,7 @@
 <ul>
 	<li>Start <%= @campaign.start_date.to_date %></li>
 	<li>End <%= @campaign.end_date.to_date %></li>
-	<li><%= ((@campaign.end_date - @campaign.start_date) / 86400).round(0) %> days remaining!</li>
+	<li><%= ((@campaign.end_date - DateTime.now) / 86400).round(0) %> days remaining!</li>
 </ul>
 
 <h2>Description</h2>
