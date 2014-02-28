@@ -14,4 +14,20 @@ class Campaign < ActiveRecord::Base
     end
     result
   end
+
+  def percent_funds_raised
+    (self.total_funds_raised / self.target_in_cents.to_f * 100).round(1)
+  end
+
+  def days_before_start
+    ((self.start_date - DateTime.now) / 86400).round(1)
+  end
+
+  def days_before_end
+    ((self.end_date - DateTime.now) / 86400).round(1)
+  end
+
+  def total_days
+    ((self.end_date - self.start_date) / 86400).round(1)
+  end
 end

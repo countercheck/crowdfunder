@@ -1,5 +1,6 @@
 class ContributionsController < ApplicationController
   before_filter :load_breakpoint
+    before_filter :ensure_logged_in
 
   def create
     #@contribution = @breakpoint.contributions.new(:breakpoint_id => params[:breakpoint_id])
