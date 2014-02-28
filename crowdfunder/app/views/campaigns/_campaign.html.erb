@@ -4,4 +4,5 @@
 	<li><%= campaign.start_date %></li>
 	<li><%= campaign.end_date %></li>
 	<li>$<%= campaign.target_in_cents %></li>
+	<li>tags: <%= campaign.tag_list.each {|t| t} %></li>
 </ul>
