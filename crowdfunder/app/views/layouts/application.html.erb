@@ -35,8 +35,14 @@
     <ul class="right">
       <li class="divider"></li>
       <% if current_user %>
-        <li><%= link_to current_user.email, edit_user_path(current_user) %></li>
-        <li><%= link_to 'logout', session_path("blah"), :method => :delete %></li>
+        <li class="has-dropdown">
+        <a href="#"><%= current_user.email %></a>
+          <ul class="dropdown">
+            <li><a href="<%= user_path(current_user) %>">My profile</a></li>
+            <li><a href="<%= edit_user_path(current_user)%>">Edit account</a></li>
+            <li><%= link_to 'Log out', session_path("blah"), :method => :delete %></li>
+          </ul>
+        </li>
       <% else %>
         <li><%= link_to 'login', new_session_path %></li>
         <li><%= link_to 'signup', new_user_path %></li>
