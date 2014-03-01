@@ -36,7 +36,7 @@
       <li class="divider"></li>
       <% if current_user %>
         <li class="has-dropdown">
-        <a href="#"><%= current_user.email %></a>
+        <a href="#"><%= current_user.name %> | <%= current_user.email %></a>
           <ul class="dropdown">
             <li><a href="<%= user_path(current_user) %>">My profile</a></li>
             <li><a href="<%= edit_user_path(current_user)%>">Edit account</a></li>
