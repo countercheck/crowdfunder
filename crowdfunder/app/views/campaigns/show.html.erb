@@ -29,11 +29,54 @@
 </div>
 
 
-<h2>Breakpoints for <%= @campaign.title %></h2>
+<h2>Contribution levels for <%= @campaign.title %></h2>
 <div id="campaigns">
 	<%= render @breakpoints %>
 </div>
 
 <% if current_user == @campaign.user %>
 	<%= render '/breakpoints/breakpoint_form' %>
+<% end %>
+
+<% if @campaign.comments[0] != nil %>
+	<h2>Comments on this campaign</h2>
+	<% @campaign.comments.each do |c| %>
+		<div class = "comment-item">
+			<p>"<%= c.comment %>"</p>
+		 	 by <%= c.user.name %>
+			<p>Added on <%= c.created_at %></p>
+			<%= link_to "delete comment", [@campaign, c], :method => :delete %>
+	</div>
+	<% end %>
+<% end %>
+
+
+<% if current_user %>
+<h2>Post new comment</h2>
+
+<%= form_for ([@campaign, @comment]) do |f| %>
+
+	<% if @comment.errors.any?  %>
+		<div id = "error_explanation">
+			<h2><%= pluralize(@comment.errors.count, "error") %> prevented this review from being saved.</h2>
+			<ul>
+				<% @comment.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+				<% end %>
+			</ul>
+	</div>
+	<% end %>
+
+	<div class = "field">
+		<%= f.label :comment %><br/>
+		<%= f.text_area :comment %>
+	</div>
+
+	<div class = "actions">
+		<%= f.submit %>
+	</div>
+	<% end %>
+
+<% else %>
+	<p>Please <%= link_to "log in", new_session_path %> to comment.</p>
 <% end %>

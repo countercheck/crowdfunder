@@ -1,5 +1,6 @@
 class Campaign < ActiveRecord::Base
 	has_many :breakpoints
+  has_many :comments
   has_many :contributions, :through => :breakpoints
   belongs_to :user
 
