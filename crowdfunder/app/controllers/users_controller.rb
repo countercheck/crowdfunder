@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+   before_filter :ensure_logged_in, :only => [:edit, :show]
+
   def new
   	@user = User.new
   end
