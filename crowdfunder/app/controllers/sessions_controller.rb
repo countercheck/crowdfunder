@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
 
   def create
     if @user = login(params[:email], params[:password], params[:remember_me])
-      redirect_back_or_to campaigns_path, :notice => 'Login successful'
+      redirect_back_or_to campaigns_path
     else
       flash.now[:alert] = "Login failed"
       render :new
