@@ -37,19 +37,21 @@
 	<%= render @breakpoints %>
 </div>
 
+<h2>Add breakpoint</h2>
 <% if current_user == @campaign.user %>
 	<%= render '/breakpoints/breakpoint_form' %>
 <% end %>
 
 <h2>Comments on this campaign</h2>
+	<div id = "comment-list">
 	<% if @campaign.comments[0] != nil %>
-		<div id = "comment-list">
 			<%= render 'comments/comments' %>
-		</div>
 	<% else %>
+	</div>
 		<p>No comments yet.</p>
 <% end %>
 
+<h2>Add comment</h2>
 <% if current_user %>
 	<%= render '/comments/comment_form' %>
 	<% else %>
