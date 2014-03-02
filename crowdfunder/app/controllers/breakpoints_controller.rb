@@ -9,7 +9,7 @@ class BreakpointsController < ApplicationController
 		if @breakpoint.save
 			redirect_to campaign_path(@campaign), notice: 'breakpoint created!'
 		else
-	    render :show
+	    redirect_to campaign_path(@campaign), notice: "something went wrong"
 		end
 
 	end
