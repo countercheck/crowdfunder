@@ -9,9 +9,12 @@
     <% if current_user && current_user.breakpoints.include?(breakpoint)%>
       <li>Congratulations, you have backed this project! </li>
 
-    <% else %>
+    <% elsif current_user %>
 
       <%= button_tag 'Contribute here!', {:class => 'contribute-button', data: campaign_breakpoint_contributions_path(breakpoint.campaign, breakpoint)} %>
+
+    <% else %>
+      <p>Log in or sign up to contribute.</p>
 
     <% end %>
   </ul>

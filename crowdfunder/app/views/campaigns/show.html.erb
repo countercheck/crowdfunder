@@ -23,14 +23,12 @@
 	<li>goal: $<%= @campaign.target_in_cents %></li>
 	<li id = 'percent'>percent: <%= @campaign.percent_funds_raised %></li>
 </ul>
+
 <h3>Progress</h3>
 <div class="progress large-6 success round">
-
 	<% percent_bar = @campaign.total_funds_raised.to_f / @campaign.target_in_cents * 100 %>
-
 	<span class="meter" style="width: <%= if percent_bar > 100 then 100 else percent_bar end %>%"></span>
 </div>
-
 
 <h2>Contribution levels for <%= @campaign.title %></h2>
 <div id="campaigns">
@@ -42,19 +40,14 @@
 <% end %>
 
 <h2>Comments on this campaign</h2>
+	<div id = "comment-list">
 	<% if @campaign.comments[0] != nil %>
-
-	<% @campaign.comments.each do |c| %>
-		<div class = "comment-item">
-			<p>"<%= c.comment %>"</p>
-		 	 by <%= c.user.name %>
-			<p>Added on <%= c.created_at %></p>
-			<%= link_to "delete comment", [@campaign, c], :method => :delete %>
-	</div>
-	<% end %>
+			<%= render 'comments/comments' %>
 	<% else %>
 		<p>No comments yet.</p>
+	</div>
 <% end %>
+
 
 <% if current_user %>
 	<%= render '/comments/comment_form' %>
