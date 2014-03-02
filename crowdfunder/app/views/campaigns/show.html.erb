@@ -23,21 +23,18 @@
 	<li>goal: $<%= @campaign.target_in_cents %></li>
 	<li id = 'percent'>percent: <%= @campaign.percent_funds_raised %></li>
 </ul>
+
 <h3>Progress</h3>
 <div class="progress large-6 success round">
-
 	<% percent_bar = @campaign.total_funds_raised.to_f / @campaign.target_in_cents * 100 %>
-
 	<span class="meter" style="width: <%= if percent_bar > 100 then 100 else percent_bar end %>%"></span>
 </div>
-
 
 <h2>Contribution levels for <%= @campaign.title %></h2>
 <div id="campaigns">
 	<%= render @breakpoints %>
 </div>
 
-<h2>Add breakpoint</h2>
 <% if current_user == @campaign.user %>
 	<%= render '/breakpoints/breakpoint_form' %>
 <% end %>
@@ -51,7 +48,7 @@
 	</div>
 <% end %>
 
-<h2>Add comment</h2>
+
 <% if current_user %>
 	<%= render '/comments/comment_form' %>
 	<% else %>
