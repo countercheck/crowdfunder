@@ -5,9 +5,9 @@ class CampaignsController < ApplicationController
   def index
 
     if params[:tag]
-      @campaigns = Campaign.tagged_with(params[:tag]).page
+      @campaigns = Campaign.tagged_with(params[:tag]).order("created_at DESC").page
     else
-      @campaigns = Campaign.page(params[:page])
+      @campaigns = Campaign.page(params[:page]).order("created_at DESC")
     end
 
     respond_to do |format|

@@ -12,18 +12,42 @@
  *= require foundation_and_overrides
  *= require_tree .
  */
+ .clear {
+  clear: both;
+ }
+
+ .campaign-description {
+  font-size: .9em;
+  color: #616161;
+ }
+ .campaign-index-tags {
+  font-size: .9em;
+  margin: .5em 0;
+ }
+
  .center {
   margin-top: 3em;
+ }
+
+.total-raised, .total-percent, .days-left {
+  float: left;
+  padding-right: 1.5em;
+ }
+
+ .total-raised p, .total-percent p, .days-left p {
+    margin: 0;
+  }
+
+ .sub-p {
+    color: #9E9E9E;
+    font-size: .75em;
+    margin: 0 0 .5em 0;
  }
 
 .name h1 {
   font-family: 'Codystar', cursive;
   margin-right: 1.5em !important;
   font-size: 2em !important;
-}
-
-.top-bar-section ul{
-  margin-right: 50px;
 }
 
 .title-area {
