@@ -1,0 +1,10 @@
+<% @campaign.comments.each do |c| %>
+	 <% if c.id.present? %>
+	 	<div class="comment">
+		<p>"<%= c.comment %>"</p>
+	 	 by <%= c.user.name %>
+		<p>Added on <%= c.created_at %></p>
+		<%= link_to "delete comment", [@campaign, c], :method => :delete %>
+		</div>
+	<% end %>
+<% end %>

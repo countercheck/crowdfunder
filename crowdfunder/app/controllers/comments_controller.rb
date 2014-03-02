@@ -13,13 +13,19 @@ class CommentsController < ApplicationController
     @comment = @campaign.comments.new(comment_params)
     @comment.user = current_user
 
+    respond_to do |format|
+
     if @comment.save
-      redirect_to campaign_path(@campaign), notice: 'Comment created!'
+      format.html {redirect_to campaign_path(@campaign), notice: 'Comment created!'}
+      format.js {}
     else
-      render :show
+      format.html {render :show}
+      format.js {}
     end
 
+    end
   end
+
 
   def destroy
     @comment = @campaign.comments.find(params[:id])

@@ -1,16 +1,12 @@
 <h2>Post new comment</h2>
-	<%= form_for ([@campaign, @comment]) do |f| %>
+<div id="new-comment">
+	<%= form_for([@campaign, @comment], remote: true) do |f| %>
 
+		<div id = "comment-form-errors">
 		<% if @comment.errors.any?  %>
-			<div id = "error_explanation">
-				<h2><%= pluralize(@comment.errors.count, "error") %> prevented this review from being saved.</h2>
-				<ul>
-					<% @comment.errors.full_messages.each do |msg| %>
-					<li><%= msg %></li>
-					<% end %>
-				</ul>
-		</div>
+				<%= render '/comments/comment_form_errors' %>
 		<% end %>
+		</div>
 
 		<div class = "field">
 			<%= f.label :comment %><br/>
@@ -22,3 +18,4 @@
 		</div>
 	<% end %>
 
+</div>

@@ -43,15 +43,9 @@
 
 <h2>Comments on this campaign</h2>
 	<% if @campaign.comments[0] != nil %>
-
-	<% @campaign.comments.each do |c| %>
-		<div class = "comment-item">
-			<p>"<%= c.comment %>"</p>
-		 	 by <%= c.user.name %>
-			<p>Added on <%= c.created_at %></p>
-			<%= link_to "delete comment", [@campaign, c], :method => :delete %>
-	</div>
-	<% end %>
+		<div id = "comment-list">
+			<%= render 'comments/comments' %>
+		</div>
 	<% else %>
 		<p>No comments yet.</p>
 <% end %>
