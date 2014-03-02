@@ -1,4 +1,9 @@
 Crowdfunder::Application.routes.draw do
+  get "comments/new"
+  get "comments/create"
+  get "comments/edit"
+  get "comments/update"
+  get "comments/destroy"
   #match 'tagged' => 'campaigns#tagged', :as => 'tagged'
   post 'campaigns/tagged' => 'campaigns#tagged', :as => 'tagged'
 
@@ -7,6 +12,7 @@ Crowdfunder::Application.routes.draw do
   resources :users, :except => [:index]
   resources :sessions, :only => [:new, :create, :destroy]
   resources :campaigns  do
+      resources :comments, :except => [:index, :show]
       resources :breakpoints, :except => [:index] do
         resources :contributions, :except => [:index, :edit, :new]
     end

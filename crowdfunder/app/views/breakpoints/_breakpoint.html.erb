@@ -4,8 +4,8 @@
     <li><%= breakpoint.description %></li>
     <li><%= breakpoint.estimated_delivery %></li>
     <li>Value: <%= breakpoint.value_in_cents %></li>
-    <li>Number available: <%= breakpoint.number_available %></li>
-
+    <li>Number taken: <%= breakpoint.contributions.count %></li>
+    <li>Number remaining: <%= breakpoint.number_available - breakpoint.contributions.count %></li>
     <% if current_user && current_user.breakpoints.include?(breakpoint)%>
       <li>Congratulations, you have backed this project! </li>
 

@@ -14,9 +14,8 @@
   	<!-- Set the viewport width to device width for mobile -->
   	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  	<title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+  	<title><%= content_for?(:title) ? yield(:title) : "CrowdFunder" %></title>
     <link href='http://fonts.googleapis.com/css?family=Codystar' rel='stylesheet' type='text/css'>
-
   	<%= stylesheet_link_tag    "application" %>
   	<%= javascript_include_tag "vendor/custom.modernizr" %>
     <%= csrf_meta_tags %>
@@ -35,26 +34,33 @@
   <section class="top-bar-section">
     <!-- Right Nav Section -->
     <ul class="right">
-      <li class="active"><%= link_to 'login', new_session_path %></li>
-      <li><%= link_to 'logout', session_path("blah"), :method => :delete %></li>
-      <li><%= link_to 'signup', new_user_path %></li>
+      <li class="divider"></li>
+      <li><%= link_to 'Home', campaigns_path %></li>
+      <% if current_user %>
+        <li class="has-dropdown">
+        <a href="#"><%= current_user.name %> | <%= current_user.email %></a>
+          <ul class="dropdown">
+            <li><a href="<%= user_path(current_user) %>">My profile</a></li>
+            <li><a href="<%= edit_user_path(current_user)%>">Edit account</a></li>
+            <li><%= link_to 'Log out', session_path("blah"), :method => :delete %></li>
+          </ul>
+        </li>
+      <% else %>
+        <li><%= link_to 'login', new_session_path %></li>
+        <li><%= link_to 'signup', new_user_path %></li>
+      <% end %>
     </ul>
   </section>
 </nav>
  <div class="row">
       <div class="columns small-12">
 
-
-    <% if current_user %>
-      <p>Logged in as <%= current_user.email %></p>
-    <% end %>
-
     <% if flash[:notice] %>
-      <p id ="notice"><%= flash[:notice] %></p>
+      <div class="alert-box"><%= flash[:notice] %></div>
     <% end %>
 
     <% if flash[:alert] %>
-      <p id ="alert"> <%= flash[:alert] %></p>
+      <div class="alert-box"><%= flash[:alert] %></div>
     <% end %>
 
     <%= yield %>

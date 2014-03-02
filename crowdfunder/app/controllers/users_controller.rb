@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+   before_filter :ensure_logged_in, :only => [:edit, :show]
+
   def new
   	@user = User.new
   end
@@ -16,6 +18,19 @@ class UsersController < ApplicationController
   	else
   		render :new
   	end
+  end
+
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(user_params)
+      redirect_to user_path(@user)
+    else
+      render :edit
+    end
   end
 
   private
