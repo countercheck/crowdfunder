@@ -12,3 +12,29 @@
  *= require foundation_and_overrides
  *= require_tree .
  */
+ .center {
+  margin-top: 3em;
+ }
+
+.name h1 {
+  font-family: 'Codystar', cursive;
+  margin-right: 1.5em !important;
+  font-size: 2em !important;
+}
+
+.top-bar-section ul{
+  margin-right: 50px;
+}
+
+.title-area {
+  margin-left: 50px;
+}
+
+ .button {
+  background-color: #79CACE;
+ }
+
+#remember_me {
+  float: left;
+  margin-right: 1em
+}
