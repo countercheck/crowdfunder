@@ -38,3 +38,7 @@
   float: left;
   margin-right: 1em
 }
+
+.campaign {
+list-style: none;
+}
