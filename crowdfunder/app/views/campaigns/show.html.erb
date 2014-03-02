@@ -1,56 +1,72 @@
-<div class="messages"></div>
-<h1><%= @campaign.title %></h1>
-<h3>Started by: <%= @campaign.user.name %></h3>
-
-<h2>Dates</h2>
-<ul>
-	<li>Start <%= @campaign.start_date.to_s(:long_ordinal) %></li>
-	<li>End <%= @campaign.end_date.to_date.to_s(:long_ordinal) %></li>
-
-	<% if @campaign.start_date > DateTime.now %>
-		<li>Campaign not started yet - Starting in <%= @campaign.days_before_start %> days!</li>
-	<% else %>
-		<li><%= @campaign.days_before_end %> of <%= @campaign.total_days %> days remaining!</li>
-	<% end %>
-</ul>
-
-<h2>Description</h2>
-<p><%= @campaign.description %></p>
-
-<h2>Goal</h2>
-<ul>
-	<li id = 'target'>Funds raised $<%= @campaign.total_funds_raised %></li>
-	<li>goal: $<%= @campaign.target_in_cents %></li>
-	<li id = 'percent'>percent: <%= @campaign.percent_funds_raised %></li>
-</ul>
-
-<h3>Progress</h3>
-<div class="progress large-6 success round">
-	<% percent_bar = @campaign.total_funds_raised.to_f / @campaign.target_in_cents * 100 %>
-	<span class="meter" style="width: <%= if percent_bar > 100 then 100 else percent_bar end %>%"></span>
-</div>
-
-<h2>Contribution levels for <%= @campaign.title %></h2>
-<div id="campaigns">
-	<%= render @breakpoints %>
-</div>
-
-<% if current_user == @campaign.user %>
-	<%= render '/breakpoints/breakpoint_form' %>
-<% end %>
-
-<h2>Comments on this campaign</h2>
-	<div id = "comment-list">
-	<% if @campaign.comments[0] != nil %>
-			<%= render 'comments/comments' %>
-	<% else %>
-		<p>No comments yet.</p>
+<section class="show-header">
+	<div class="row">
+		<div class="messages"></div>
+		<h1><%= @campaign.title %></h1>
+		<h3>Started by: <%= @campaign.user.name %></h3>
 	</div>
-<% end %>
+</section>
+
+<section>
+	<div class="row">
+		<div class="small-6 large-7 columns">
+			<h2>Dates</h2>
+			<ul>
+				<li>Start <%= @campaign.start_date.to_s(:long_ordinal) %></li>
+				<li>End <%= @campaign.end_date.to_date.to_s(:long_ordinal) %></li>
+
+				<% if @campaign.start_date > DateTime.now %>
+					<li>Campaign not started yet - Starting in <%= @campaign.days_before_start %> days!</li>
+				<% else %>
+					<li><%= @campaign.days_before_end %> of <%= @campaign.total_days %> days remaining!</li>
+				<% end %>
+			</ul>
+
+			<h2>Description</h2>
+			<p><%= @campaign.description %></p>
 
 
-<% if current_user %>
-	<%= render '/comments/comment_form' %>
-	<% else %>
-	<p>Please <%= link_to "log in", new_session_path %> to comment.</p>
-<% end %>
+
+			<% if current_user == @campaign.user %>
+				<%= render '/breakpoints/breakpoint_form' %>
+			<% end %>
+
+			<h2>Comments on this campaign</h2>
+				<div id = "comment-list">
+				<% if @campaign.comments[0] != nil %>
+						<%= render 'comments/comments' %>
+				<% else %>
+					<p>No comments yet.</p>
+				</div>
+			<% end %>
+
+
+			<% if current_user %>
+				<%= render '/comments/comment_form' %>
+				<% else %>
+				<p>Please <%= link_to "log in", new_session_path %> to comment.</p>
+			<% end %>
+		</div>
+
+
+	  <div class="small-6 large-5 columns">
+			<ul>
+				<li id = 'target'>$<%= @campaign.total_funds_raised %></li>
+				<li>
+					<div class="progress large-6 success round">
+						<% percent_bar = @campaign.total_funds_raised.to_f / @campaign.target_in_cents * 100 %>
+						<span class="meter" style="width: <%= if percent_bar > 100 then 100 else percent_bar end %>%"></span>
+					</div>
+				</li>
+				<li>Raised of $<%= @campaign.target_in_cents %> goal</li>
+			</ul>
+
+			<h3>Progress</h3>
+
+
+			<h2>Contribution levels for <%= @campaign.title %></h2>
+			<div id="campaigns">
+				<%= render @breakpoints %>
+			</div>
+	  </div>
+	</div>
+</section>

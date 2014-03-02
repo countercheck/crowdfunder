@@ -13,7 +13,8 @@
 			<li><p class="campaign-description"><%= campaign.description %></p></li>
 			<li>
 				<div class="progress small-12 success round">
-		  		<span class="meter" style="width:<%= campaign.total_funds_raised.to_f / campaign.target_in_cents * 100 %>"></span>
+		  		<% percent_bar = campaign.total_funds_raised.to_f / campaign.target_in_cents * 100 %>
+					<span class="meter" style="width: <%= if percent_bar > 100 then 100 else percent_bar end %>%"></span>
 		  	</div>
 		  </li>
 		  <li>

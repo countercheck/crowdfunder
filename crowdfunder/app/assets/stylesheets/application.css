@@ -74,6 +74,11 @@
   color: #fff;
   margin-bottom: 0;
 }
+.name a:hover{
+
+  color: #fff;
+
+}
 
 .name p{
   margin: .85em 0 0 1em;
