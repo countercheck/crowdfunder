@@ -38,8 +38,9 @@
 	<%= render '/breakpoints/breakpoint_form' %>
 <% end %>
 
-<% if @campaign.comments[0] != nil %>
-	<h2>Comments on this campaign</h2>
+<h2>Comments on this campaign</h2>
+	<% if @campaign.comments[0] != nil %>
+
 	<% @campaign.comments.each do |c| %>
 		<div class = "comment-item">
 			<p>"<%= c.comment %>"</p>
@@ -48,8 +49,12 @@
 			<%= link_to "delete comment", [@campaign, c], :method => :delete %>
 	</div>
 	<% end %>
+	<% else %>
+		<p>No comments yet.</p>
 <% end %>
 
 <% if current_user %>
 	<%= render '/comments/comment_form' %>
+	<% else %>
+	<p>Please <%= link_to "log in", new_session_path %> to comment.</p>
 <% end %>
