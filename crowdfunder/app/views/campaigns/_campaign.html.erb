@@ -18,7 +18,7 @@
 		  </li>
 		  <li>
 		  	<div class="total-percent">
-		  		<p><%= (campaign.total_funds_raised.to_f / campaign.target_in_cents * 100).to_i %>% </p>
+		  		<p><%= campaign.percent_funds_raised %>% </p>
 		  		<p class="sub-p">Funded</p>
 		  	</div>
 		  	<div class="total-raised">
@@ -26,7 +26,7 @@
 		  		<p class="sub-p">Funds raised</p>
 		  	</div>
 		  	<div class="days-left">
-		  		<p><%= ((campaign.end_date - DateTime.now) / 86400).to_i.to_s(:long_ordinal) %></p>
+		  		<p><%= campaign.days_before_end.floor %></p>
 		  		<p class="sub-p">Days left</p>
 		  	</div>
 		  	<div class="clear"></div>
