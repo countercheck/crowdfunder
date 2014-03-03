@@ -6,17 +6,12 @@
     <li><%= breakpoint.description %></li>
     <li>Number taken: <%= breakpoint.contributions.count %></li>
     <li>Estimated delivery: <%= breakpoint.estimated_delivery %></li>
-
     <% if current_user && current_user.breakpoints.include?(breakpoint)%>
       <li class="backed">You have pledged this perk!</li>
-
     <% elsif current_user %>
-
       <%= button_tag 'Contribute here!', {:class => 'contribute-button', data: campaign_breakpoint_contributions_path(breakpoint.campaign, breakpoint)} %>
-
     <% else %>
       <p>Log in or sign up to contribute.</p>
-
     <% end %>
   </ul>
 </div>
