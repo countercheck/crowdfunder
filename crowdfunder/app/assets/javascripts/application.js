@@ -33,6 +33,8 @@ $(document).ready(function(){
 
 	$('.contribute-button').on('click',function(e){
 
+		$(this).attr('disabled', 'true')
+
 		e.preventDefault();
 		myUrl = $(this).attr('data');
 		$.ajax({
@@ -44,9 +46,25 @@ $(document).ready(function(){
 	});
 
 	paginate();
-	
+
 
 
 
 });
 $(function(){ $(document).foundation(); });
+
+
+
+$(function() {
+   $("#new-comment")
+      .on('ajax:beforeSend', function() { // set this code to happen just before the ajax request is made
+        $("#new-comment input[type='submit']") // make changes to the submit button
+          .val('Saving...') // change the text on the button
+          .attr('disabled', 'disabled'); // disable the button
+      })
+      .on('ajax:complete', function() {
+        $("#new-comment input[type='submit']")
+          .val('Create comment')
+          .removeAttr('disabled');
+      });
+});
