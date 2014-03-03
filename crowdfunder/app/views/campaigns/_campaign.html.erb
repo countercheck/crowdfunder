@@ -1,44 +1,40 @@
-<li data-equalizer>
+<li data-equalizer-watch>
 	<div class="campaign">
-		<div class="campaign-image">
-<!-- 220 x 194 -->
-		</div>
-		<ul data-equalizer-watch>
-			<li>
-				<div class="campaig-image">
-				</div>
-			</li>
-			<li><%= link_to campaign.title, campaign_path(campaign) %></li>
-			<li><p class="sub-p">by: <%= campaign.user.name %></p></li>
-			<li><p class="campaign-description"><%= campaign.description %></p></li>
-			<li>
-				<div class="progress small-12 success round">
-		  		<% percent_bar = campaign.total_funds_raised.to_f / campaign.target_in_cents * 100 %>
-					<span class="meter" style="width: <%= if percent_bar > 100 then 100 else percent_bar end %>%"></span>
-		  	</div>
-		  </li>
-		  <li>
-		  	<div data-equalizer-watch class="total-percent">
-		  		<p><%= (campaign.total_funds_raised.to_f / campaign.target_in_cents * 100).to_i %>% </p>
-		  		<p class="sub-p">Funded</p>
-		  	</div>
-		  	<div data-equalizer-watch class="total-raised">
-		  		<p>$<%= campaign.total_funds_raised %></p>
-		  		<p class="sub-p">Funds raised</p>
-		  	</div>
-		  	<div data-equalizer-watch class="days-left">
-		  		<p><%= ((campaign.end_date - DateTime.now) / 86400).to_i.to_s(:long_ordinal) %></p>
-		  		<p class="sub-p">Days left</p>
-		  	</div>
-		  	<div class="clear"></div>
-			</li>
-			<% if campaign.tags.any? %>
-				<li class="campaign-index-tags">tags:
-				<% campaign.tag_list.each do |t| %>
-					<%= link_to t, campaigns_path(tag: t) %>
+		<div class="campaign-image"></div>
+		<div class="index-campaign-body">
+			<ul>
+				<li><%= link_to campaign.title, campaign_path(campaign) %></li>
+				<li><p class="sub-p">by: <%= campaign.user.name %></p></li>
+				<li><p class="campaign-description"><%= campaign.description %></p></li>
+				<li>
+					<div class="progress small-12 success round">
+			  		<% percent_bar = campaign.total_funds_raised.to_f / campaign.target_in_cents * 100 %>
+						<span class="meter" style="width: <%= if percent_bar > 100 then 100 else percent_bar end %>%"></span>
+			  	</div>
+			  </li>
+			  <li>
+			  	<div class="total-percent">
+			  		<p><%= (campaign.total_funds_raised.to_f / campaign.target_in_cents * 100).to_i %>% </p>
+			  		<p class="sub-p">Funded</p>
+			  	</div>
+			  	<div class="total-raised">
+			  		<p>$<%= campaign.total_funds_raised %></p>
+			  		<p class="sub-p">Funds raised</p>
+			  	</div>
+			  	<div class="days-left">
+			  		<p><%= ((campaign.end_date - DateTime.now) / 86400).to_i.to_s(:long_ordinal) %></p>
+			  		<p class="sub-p">Days left</p>
+			  	</div>
+			  	<div class="clear"></div>
+				</li>
+				<% if campaign.tags.any? %>
+					<li class="campaign-index-tags">tags:
+					<% campaign.tag_list.each do |t| %>
+						<%= link_to t, campaigns_path(tag: t) %>
+					<% end %>
 				<% end %>
-			<% end %>
-			</li>
-		</ul>
+				</li>
+			</ul>
+		</div>
 	</div>
 </li>

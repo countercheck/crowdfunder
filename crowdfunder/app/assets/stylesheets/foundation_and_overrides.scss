@@ -63,7 +63,7 @@ $em-base: 16px !default;
 
 $default-float: left;
 
-// $body-bg: #fff;
+$body-bg: #DEDDDD;
 // $body-font-color: #222;
 // $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 // $body-font-weight: normal;
@@ -80,7 +80,7 @@ $default-float: left;
 // Colors
 
   $primary-color: #1c6396;
-// $secondary-color: #2BCB44;
+// $secondary-color: #687A96;
 // $alert-color: #c60f13;
 // $success-color: #5da423;
 
@@ -364,7 +364,7 @@ $row-width: em-calc(1200);
 // We use this to control the display property.
 
 // $button-display: inline-block;
-// $button-margin-bottom: em-calc(20);
+ $button-margin-bottom: em-calc(0);
 
 // We use these to control button text styles.
 

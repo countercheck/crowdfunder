@@ -1,13 +1,14 @@
 <div class = "breakpoint" id="b_<%= breakpoint.id %>">
   <ul>
-    <li><%= breakpoint.title %></li>
+    <li><h3>$<%= breakpoint.value_in_cents %></h3></li>
+    <li><%= breakpoint.number_available - breakpoint.contributions.count %> left of <%= breakpoint.number_available %></li>
+    <li><h6><%= breakpoint.title %></h6></li>
     <li><%= breakpoint.description %></li>
-    <li><%= breakpoint.estimated_delivery %></li>
-    <li>Value: <%= breakpoint.value_in_cents %></li>
     <li>Number taken: <%= breakpoint.contributions.count %></li>
-    <li>Number remaining: <%= breakpoint.number_available - breakpoint.contributions.count %></li>
+    <li>Estimated delivery: <%= breakpoint.estimated_delivery %></li>
+
     <% if current_user && current_user.breakpoints.include?(breakpoint)%>
-      <li>Congratulations, you have backed this project! </li>
+      <li class="backed">You have pledged this perk!</li>
 
     <% elsif current_user %>
 
